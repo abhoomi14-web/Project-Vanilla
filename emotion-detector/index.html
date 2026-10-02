@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Private, in-browser facial expression recognition powered by machine learning." />
+    <title>Pulse AI</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2309101f'/%3E%3Cpath d='M13 33h10l5-12 8 24 5-12h10' fill='none' stroke='%236bdcff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark" aria-hidden="true">◉</span><span>PULSE AI</span></div>
+        <div class="privacy-pill"><span aria-hidden="true"></span> On-device analysis</div>
+      </header>
+
+      <section class="intro">
+        <p class="eyebrow">Expression recognition</p>
+        <h1>See the signal.<br><span>Read the moment.</span></h1>
+        <p class="intro-copy">A private AI experiment that estimates visible facial expressions from your camera in real time.</p>
+      </section>
+
+      <section class="detector" aria-label="Emotion detector">
+        <div class="camera-card">
+          <div class="camera-stage" id="camera-stage">
+            <video id="video" playsinline muted></video>
+            <canvas id="overlay" aria-hidden="true"></canvas>
+            <div class="camera-placeholder" id="placeholder">
+              <div class="focus-frame" aria-hidden="true"></div>
+              <p>Camera is off</p>
+              <span>Your video stays in this browser</span>
+            </div>
+            <div class="scan-line" id="scan-line" hidden></div>
+            <div class="live-badge" id="live-badge" hidden><span></span> Live</div>
+          </div>
+          <div class="camera-controls">
+            <div>
+              <strong id="status-title">Ready to begin</strong>
+              <span id="status-copy">Start the camera when you’re ready.</span>
+            </div>
+            <button class="primary-button" id="camera-toggle" type="button">Start camera</button>
+          </div>
+        </div>
+
+        <aside class="results-card" aria-live="polite">
+          <div class="result-kicker">Current expression</div>
+          <div class="emotion-name" id="emotion-name">Waiting</div>
+          <div class="confidence-row"><span>Confidence</span><strong id="confidence">—</strong></div>
+          <div class="meter"><span id="confidence-meter"></span></div>
+          <div class="emotion-bars" id="emotion-bars">
+            <div data-emotion="happy"><span>Happy</span><div><i></i></div><b>0%</b></div>
+            <div data-emotion="neutral"><span>Neutral</span><div><i></i></div><b>0%</b></div>
+            <div data-emotion="surprise"><span>Surprised</span><div><i></i></div><b>0%</b></div>
+            <div data-emotion="sad"><span>Sad</span><div><i></i></div><b>0%</b></div>
+            <div data-emotion="angry"><span>Angry</span><div><i></i></div><b>0%</b></div>
+            <div data-emotion="fear"><span>Fearful</span><div><i></i></div><b>0%</b></div>
+            <div data-emotion="disgust"><span>Disgusted</span><div><i></i></div><b>0%</b></div>
+          </div>
+        </aside>
+      </section>
+
+      <p class="disclaimer"><strong>Good to know:</strong> This estimates visible expressions, not thoughts or inner feelings. Results can be uncertain and should not be used for important decisions.</p>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@vladmandic/human@3.3.6/dist/human.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
